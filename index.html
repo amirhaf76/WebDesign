@@ -2,27 +2,29 @@
 <html>
     <head>
         <title>Midterm Exam</title>
+        <meta charset="UTF-8">
         <meta name="description" content="Midterm of WebDisign Course">
         <meta name="author" content="Amirhosein Amir Firouzkouhi">
+        <script src="javascriptFile.js"></script>
     </head>
 
     <body>
         <img src="" alt="Background Image.">
         <div>
             <h1>Mr. or Ms.?</h1>
-            <form action="post">
+            <form>
                 
                 <label for="textNameId">Name</label>
-                <input type="text" name="name" id="textNameId"  maxlength="255"> 
+                <input type="text" name="name" id="Id-textName"  maxlength="255"> 
 
                 <!-- radio input -->
-                <input type="radio" name="maleRadio" id="maleRadioId" value="Male">
-                <label for="maleRadioId">Male</label>
-                <input type="radio" name="femaleRadio" id="femaleRadioId" value="Female" >
-                <label for="maleRadioId">Female</label>
+                <input type="radio" name="gender" id="Id-maleRadio" value="Male">
+                <label for="Id-maleRadio">Male</label>
+                <input type="radio" name="gender" id="Id-femaleRadio" value="Female" >
+                <label for="Id-femaleRadio">Female</label>
 
-                <input type="submit" value="Submit" id="submitButtonId">
-                <input type="button" value="Save" name="saveButton" id="saveButtonId">
+                <input type="submit" value="Submit" id="Id-submitButton">
+                <input type="button" value="Save" name="saveButton" id="Id-saveButton">
             </form>
             
         </div>
@@ -37,6 +39,10 @@
             
         </div>
         
+        <script>
+            configSetting();
+            predictGender("hasssani")
+        </script>
     </body>
 
 
