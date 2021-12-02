@@ -5,30 +5,37 @@
         <meta charset="UTF-8">
         <meta name="description" content="Midterm of WebDisign Course">
         <meta name="author" content="Amirhosein Amir Firouzkouhi">
-        <script src="javascriptFile.js"></script>
+
+        <link rel="stylesheet" href="cssFile.css">
+        
     </head>
 
-    <body>
-        <img src="" alt="Background Image.">
-        <div>
+    <body class="main_background"> 
+        <div class="main_form">
+            <div class="div_part">
             <h1>Mr. or Ms.?</h1>
-            <form>
-                
-                <label for="textNameId">Name</label>
-                <input type="text" name="name" id="Id-textName"  maxlength="255"> 
-
+            <form class="top_down">
+                <div>
+                    <label for="textNameId">Name</label>
+                    <input type="text" name="name" id="Id-textName"  maxlength="255">  
+                </div>
                 <!-- radio input -->
-                <input type="radio" name="gender" id="Id-maleRadio" value="Male">
-                <label for="Id-maleRadio">Male</label>
-                <input type="radio" name="gender" id="Id-femaleRadio" value="Female" >
-                <label for="Id-femaleRadio">Female</label>
+                <div>
+                    <input type="radio" name="gender" id="Id-maleRadio" value="Male">
+                    <label for="Id-maleRadio">Male</label>
+                </div>
+                <div>
+                    <input type="radio" name="gender" id="Id-femaleRadio" value="Female" >
+                    <label for="Id-femaleRadio">Female</label>    
+                </div>
+                
 
                 <input type="submit" value="Submit" id="Id-submitButton">
                 <input type="button" value="Save" name="saveButton" id="Id-saveButton">
             </form>
             
         </div>
-        <div>
+        <div class="div_part"> 
             <h1>Prediction</h1>
             <span>
                 <p>Male</p>
@@ -38,11 +45,14 @@
             <p>first part</p>
             
         </div>
+        </div>
+        
         
         <script>
             configSetting();
-            predictGender("hasssani")
+            // predictGender("hasssani")
         </script>
+        <script src="javascriptFile.js"></script>
     </body>
 
 
