@@ -7,9 +7,34 @@
     </head>
 
     <body>
-        <img alt="Background Image.">
+        <img src="" alt="Background Image.">
         <div>
-            <p>Center</p>
+            <h1>Mr. or Ms.?</h1>
+            <form action="post">
+                
+                <label for="textNameId">Name</label>
+                <input type="text" name="name" id="textNameId"  maxlength="255"> 
+
+                <!-- radio input -->
+                <input type="radio" name="maleRadio" id="maleRadioId" value="Male">
+                <label for="maleRadioId">Male</label>
+                <input type="radio" name="femaleRadio" id="femaleRadioId" value="Female" >
+                <label for="maleRadioId">Female</label>
+
+                <input type="submit" value="Submit" id="submitButtonId">
+                <input type="button" value="Save" name="saveButton" id="saveButtonId">
+            </form>
+            
+        </div>
+        <div>
+            <h1>Prediction</h1>
+            <span>
+                <p>Male</p>
+                <p>number</p>
+            </span>
+            <textarea name="textArea1" id="textArea1Id" cols="30" rows="10"></textarea>
+            <p>first part</p>
+            
         </div>
         
     </body>
