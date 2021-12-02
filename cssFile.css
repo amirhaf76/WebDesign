@@ -12,26 +12,62 @@ body.main_background {
     height: 100vh;
 }
 
-div.main_form {
+div.main_board {
     display: flex;
     background-color: hsla(0, 100%, 100%, .85);
-    border-radius: 30px;
+    border-radius: 50px;
     width: 50vw;
     height: 60vh;
-    padding: 10px 10px 10px 10px;
-    column-gap: 10px;
+    padding: 20px;
+    column-gap: 20px;
+    padding-left: 50px;
 }
 
-.top_down {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    row-gap: 10px;
-}
-
-.div_part {
+.board_section {
     width: 50%;
     height: 50%;
 }
 
+.board_section_right{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 50px;
+}
 
+.radio_input_label {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+.radio_row {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    row-gap: 5px;
+}
+
+.fixed_siz_column {
+    width: 80px;
+}
+
+.buttons_top_down {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    align-content: center;
+    row-gap: 5px;
+}
+
+input.cButton {
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 10px;
+    border-color: black;
+    background-color: inherit;
+    width: 80px;
+    height: 25px;
+}
