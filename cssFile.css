@@ -1,0 +1,123 @@
+body.main_background {
+    display: flex;
+    background-image: url("birds.JPG");
+    background-size: cover;
+    background-attachment: fixed;
+    
+    justify-content: center;
+    align-items: center;
+    align-content: stretch;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+}
+
+div.main_board {
+    display: flex;
+    background-color: hsla(0, 100%, 100%, .85);
+    border-radius: 50px;
+    width: 50vw;
+    height: 60vh;
+    padding: 20px;
+    column-gap: 20px;
+    padding-left: 50px;
+    min-width: 600px;
+    min-height: 400px;
+}
+
+.board_section {
+    width: 50%;
+    height: 50%;
+}
+
+.board_section_left{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 50px;
+}
+
+.board_section_right{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    row-gap: 50px;
+}
+
+.radio_input_label {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+.radio_row {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    row-gap: 5px;
+}
+
+.fixed_siz_column {
+    width: 80px;
+}
+
+.buttons_top_down {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    align-content: center;
+    row-gap: 5px;
+}
+
+.cButton {
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 10px;
+    border-color: black;
+    background-color: inherit;
+    width: 80px;
+    height: 25px;
+}
+
+.prediction_layout {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    top: -10px;
+}
+
+#Id-textName {
+    width: 200px;
+    margin-left: 20px;
+  }
+  
+.save_area {
+width: 200px;
+border-style: dotted;
+border-width: 2px;
+}
+  
+
+#Id-boardInfo-p {
+    margin: 0;
+    overflow: auto;
+    height: 80%;
+}
+
+.board_info {
+    width: 100%;
+    height: 80%;
+    margin: 0;
+    width: 200px;
+    border-style: dotted;
+    border-width: 2px;
+    height: 160px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    visibility: hidden;
+}

@@ -2,40 +2,67 @@
 <html>
     <head>
         <title>Midterm Exam</title>
+        <meta charset="UTF-8">
         <meta name="description" content="Midterm of WebDisign Course">
         <meta name="author" content="Amirhosein Amir Firouzkouhi">
+
+        <link rel="stylesheet" href="cssFile.css">
+        
     </head>
 
-    <body>
-        <img src="" alt="Background Image.">
-        <div>
-            <h1>Mr. or Ms.?</h1>
-            <form action="post">
+    <body class="main_background"> 
+        <div class="main_board">
+
+            <div class="board_section">
+                <h1>Mr. or Ms.?</h1>
+                <form id="id_form" class="board_section_left">
+                    <div>
+                        <label for="textNameId">Name</label>
+                        <input type="text" name="name" id="Id-textName"  maxlength="255">  
+                    </div>
+                    
+                    <div class="radio_input_label fixed_siz_column">
+                        <div class="radio_row ">
+                            <input type="radio" name="gender" id="Id-maleRadio" value="Male">
+                            <input type="radio" name="gender" id="Id-femaleRadio" value="Female" >
+                        </div>
+                        <div class="radio_row">
+                            <label for="Id-maleRadio">Male</label>
+                            <label for="Id-femaleRadio">Female</label>    
+                        </div>
+                    </div>
+                    
+                    <div class="buttons_top_down fixed_siz_column">
+                        <input class="cButton" type="submit" value="Submit" id="Id-submitButton">
+                        <input onclick="saveInfo()" class="cButton" type="button" value="Save" name="saveButton" id="Id-saveButton">
+                    </div>
+                </form>
+            </div>
+
+            <div class="board_section"> 
+                <h1>Prediction</h1>
+                <div class="board_section_right">
+                     <div>
+                    <span class="prediction_layout fixed_siz_column">
+                        <span id="Id-predictionGender">Male</span>
+                        <span id="Id-predictionNumber">number</span>
+                    </span> 
+                </div>
                 
-                <label for="textNameId">Name</label>
-                <input type="text" name="name" id="textNameId"  maxlength="255"> 
-
-                <!-- radio input -->
-                <input type="radio" name="maleRadio" id="maleRadioId" value="Male">
-                <label for="maleRadioId">Male</label>
-                <input type="radio" name="femaleRadio" id="femaleRadioId" value="Female" >
-                <label for="maleRadioId">Female</label>
-
-                <input type="submit" value="Submit" id="submitButtonId">
-                <input type="button" value="Save" name="saveButton" id="saveButtonId">
-            </form>
-            
+                <div id="Id-boardInfo" class="board_info">
+                    <p  id="Id-boardInfo-p"></p>
+                    <input onclick="clearBoardInfo()" class="cButton" type="button" value="clear" name="clearButton" id="Id-clearButton"> 
+                </div>
+                </div>
+               
+                
+            </div>
         </div>
-        <div>
-            <h1>Prediction</h1>
-            <span>
-                <p>Male</p>
-                <p>number</p>
-            </span>
-            <textarea name="textArea1" id="textArea1Id" cols="30" rows="10"></textarea>
-            <p>first part</p>
-            
-        </div>
+        <script src="javascriptFile.js"></script>
+        <script>
+            configSetting();
+            setInterval(checkingGender, 3000);
+        </script>
         
     </body>
 
