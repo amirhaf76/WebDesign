@@ -18,7 +18,7 @@
                 <form id="id_form" class="board_section_left">
                     <div>
                         <label for="textNameId">Name</label>
-                        <input type="text" name="name" id="Id-textName"  maxlength="255">  
+                        <input type="text" onchange="checkingGender()" name="name" id="Id-textName"  maxlength="255">  
                     </div>
                     
                     <div class="radio_input_label fixed_siz_column">
@@ -61,7 +61,7 @@
         <script src="javascriptFile.js"></script>
         <script>
             configSetting();
-            setInterval(checkingGender, 3000);
+            // setInterval(checkingGender, 3000);
         </script>
         
     </body>

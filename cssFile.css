@@ -1,42 +1,57 @@
 body.main_background {
+    /* layout. */
     display: flex;
-    background-image: url("birds.JPG");
-    background-size: cover;
-    background-attachment: fixed;
-    
     justify-content: center;
     align-items: center;
     align-content: stretch;
+
+    background-image: url("birds.JPG");
+
+    /* fixed position and size. */
+    background-size: cover;
+    background-attachment: fixed;
+    
     overflow: hidden;
+
+    /* for covering whole of view port. */
     width: 100vw;
     height: 100vh;
 }
 
+/* it is about white regtangular. */
 div.main_board {
-    display: flex;
+    /* shape and opicity */
     background-color: hsla(0, 100%, 100%, .85);
     border-radius: 50px;
+
+    /* Layout.  */
+    display: flex;
     width: 50vw;
     height: 60vh;
     padding: 20px;
     column-gap: 20px;
     padding-left: 50px;
+
     min-width: 600px;
     min-height: 400px;
 }
 
+/* the main white  main_board devide to part. */
 .board_section {
     width: 50%;
     height: 50%;
 }
 
+/* lay out of left part */
 .board_section_left{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     row-gap: 50px;
+    background-color: inherit;
 }
 
+/* lay out of right part */
 .board_section_right{
     display: flex;
     flex-direction: column;
@@ -44,6 +59,7 @@ div.main_board {
     justify-content: flex-start;
     row-gap: 50px;
 }
+
 
 .radio_input_label {
     display: flex;
@@ -60,6 +76,7 @@ div.main_board {
     row-gap: 5px;
 }
 
+/* for radio_row and radio_input_label*/
 .fixed_siz_column {
     width: 80px;
 }
@@ -95,19 +112,16 @@ div.main_board {
     margin-left: 20px;
   }
   
-.save_area {
-width: 200px;
-border-style: dotted;
-border-width: 2px;
-}
-  
+
 
 #Id-boardInfo-p {
     margin: 0;
     overflow: auto;
     height: 80%;
 }
-
+  
+    
+/* the config of board_info */
 .board_info {
     width: 100%;
     height: 80%;
