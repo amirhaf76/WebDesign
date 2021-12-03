@@ -15,7 +15,7 @@
 
             <div class="board_section">
                 <h1>Mr. or Ms.?</h1>
-                <form class="board_section_left">
+                <form id="id_form" class="board_section_left">
                     <div>
                         <label for="textNameId">Name</label>
                         <input type="text" name="name" id="Id-textName"  maxlength="255">  
@@ -34,7 +34,7 @@
                     
                     <div class="buttons_top_down fixed_siz_column">
                         <input class="cButton" type="submit" value="Submit" id="Id-submitButton">
-                        <input class="cButton" type="button" value="Save" name="saveButton" id="Id-saveButton">
+                        <input onclick="saveInfo()" class="cButton" type="button" value="Save" name="saveButton" id="Id-saveButton">
                     </div>
                 </form>
             </div>
@@ -44,14 +44,14 @@
                 <div class="board_section_right">
                      <div>
                     <span class="prediction_layout fixed_siz_column">
-                        <p id="Id-predictionGender">Male</p>
-                        <p id="Id-predictionNumber">number</p>
+                        <span id="Id-predictionGender">Male</span>
+                        <span id="Id-predictionNumber">number</span>
                     </span> 
                 </div>
                 
-                <div>
-                    <p id="id-json">first part</p>
-                    <input onclick="checkingGender()" class="cButton" type="button" value="clear" name="clearButton" id="Id-clearButton"> 
+                <div id="Id-boardInfo" class="board_info">
+                    <p  id="Id-boardInfo-p"></p>
+                    <input onclick="clearBoardInfo()" class="cButton" type="button" value="clear" name="clearButton" id="Id-clearButton"> 
                 </div>
                 </div>
                
@@ -61,7 +61,7 @@
         <script src="javascriptFile.js"></script>
         <script>
             configSetting();
-            //setInterval(checkingGender, 3000);
+            setInterval(checkingGender, 3000);
         </script>
         
     </body>

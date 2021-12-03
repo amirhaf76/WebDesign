@@ -5,7 +5,6 @@
  */
 function testPattern(text) {
     const temp = text.replaceAll(" ", "a");
-    
     if (/(?:\W|\d|\t|\n|_)+/.test(temp)) return false;
 
     return true;
@@ -32,8 +31,15 @@ function predictGender(name) {
 }
 
 function myDisplayer(some) {
-    document.getElementById("Id-predictionGender").innerHTML = some.name;
+
+    if (some.gender === null) {
+        document.getElementById("Id-predictionGender").innerHTML = "Unknown";
+    } 
+    else {
+        document.getElementById("Id-predictionGender").innerHTML = some.gender;
+    }
     document.getElementById("Id-predictionNumber").innerHTML = some.probability;
+    // document.getElementById("Id-pad").innerHTML = JSON.stringify(some);
 }
 
 /**
@@ -54,8 +60,68 @@ function configSetting() {
 
 
 function checkingGender() {
-    const name = document.querySelector("#Id-textName").value;
+    const name = document.querySelector("#Id-textName").value.trim();
     if (testPattern(name)) {
         predictGender(name);
     }
+}
+
+
+class Person {
+    constructor(name, gender) {
+        this.name = name;
+        this.gender = gender;
+    }
+    get cname() {
+        return this.name;
+    }
+    get cgender() {
+        return this.gender;
+    }
+    set cname(new_name) {
+        this.name = new_name;
+    }
+    set cgender(g) {
+        this.gender = g;
+    }
+}
+/**
+ * It take an object of Person and show it in board info
+ * 
+ */
+function saveInfo() {
+    const name = document.getElementById("Id-textName").value.trim();
+    const gender = document.querySelector("input[name=gender]:checked");
+    console.log(name);
+    console.log(gender.value);
+    
+    
+
+    let exit = name === "";
+    exit |= !testPattern(name);
+    exit |= gender === null;
+    if (exit) return;
+
+    const p = new Person(name, gender.value);
+
+    localStorage.setItem(p.name, p);
+    console.log(localStorage.getItem(p.name).gender);
+    
+
+    document.getElementById("Id-boardInfo").style.visibility = "visible";
+    let isBoardEmpty = document.getElementById("Id-boardInfo-p").innerHTML === "";
+    if (isBoardEmpty) {
+        document.getElementById("Id-boardInfo-p").innerHTML = p.name + ", " + p.gender + "<br />";
+    }
+    else {
+        console.log("empty n");
+        
+        document.getElementById("Id-boardInfo-p").innerHTML += p.name + ", " + p.gender + "<br />";
+    }
+
+}
+
+function clearBoardInfo() {
+    document.getElementById("Id-boardInfo-p").innerHTML = "";
+    document.getElementById("Id-boardInfo").style.visibility = "hidden";
 }
