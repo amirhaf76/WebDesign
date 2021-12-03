@@ -22,15 +22,16 @@ function predictGender(name) {
         return response.json();
     })
     .then((data) => {
-        console.log(data);
-        myDisplayer(data);
+        importToBoardInfo(data);
     })
     .catch(error => {console.error("There is problem in fetching", error);});
-
-    console.log("here");
 }
 
-function myDisplayer(some) {
+/**
+ * It replace probability of person who entered.
+ * @param {Person} some 
+ */
+function importToBoardInfo(some) {
 
     if (some.gender === null) {
         document.getElementById("Id-predictionGender").innerHTML = "Unknown";
@@ -39,29 +40,26 @@ function myDisplayer(some) {
         document.getElementById("Id-predictionGender").innerHTML = some.gender;
     }
     document.getElementById("Id-predictionNumber").innerHTML = some.probability;
-    // document.getElementById("Id-pad").innerHTML = JSON.stringify(some);
 }
 
 /**
  * Set some setting.
+ * it is for prevnting default event handler.
  */
 function configSetting() {
-
     /** Preventing default submit browser. */
     document.querySelector("#Id-submitButton").addEventListener("click", (event) => {
-
-        /** For debbuging */
-        console.log("preventDefault");
-
         event.preventDefault();
     });
 }
 
-
-
+/**
+ * whenever the value of name input changes, it calls and try to get prediction.
+ */
 function checkingGender() {
     const name = document.querySelector("#Id-textName").value.trim();
-    if (testPattern(name)) {
+
+    if (isPersonInputsCorrect()) {
         predictGender(name);
     }
 }
@@ -85,30 +83,31 @@ class Person {
         this.gender = g;
     }
 }
+
 /**
  * It take an object of Person and show it in board info
  * 
  */
 function saveInfo() {
+    // checking whether all inputs are full.
     const name = document.getElementById("Id-textName").value.trim();
     const gender = document.querySelector("input[name=gender]:checked");
-    console.log(name);
-    console.log(gender.value);
     
-    
-
     let exit = name === "";
     exit |= !testPattern(name);
     exit |= gender === null;
     if (exit) return;
 
+    // create a person
     const p = new Person(name, gender.value);
 
-    localStorage.setItem(p.name, p);
-    console.log(localStorage.getItem(p.name).gender);
-    
+    // add it to storage
+    addPerson(p)
 
+    // turn on visibility of board info
     document.getElementById("Id-boardInfo").style.visibility = "visible";
+
+    // try to set the each person who are in storage.
     let isBoardEmpty = document.getElementById("Id-boardInfo-p").innerHTML === "";
     if (isBoardEmpty) {
         document.getElementById("Id-boardInfo-p").innerHTML = p.name + ", " + p.gender + "<br />";
@@ -122,6 +121,86 @@ function saveInfo() {
 }
 
 function clearBoardInfo() {
+    // checking whether all inputs are full.
+    const name = document.getElementById("Id-textName").value.trim();
+    const gender = document.querySelector("input[name=gender]:checked");
+    
+    let exit = name == "";
+    exit |= !testPattern(name);
+    exit |= gender == null;
+    if (exit) return;
+
+    // create a person
+    const p = new Person(name, gender.value);
+
+    // clear user
+    let peopleArr = clearPerson(p)
+
+    // check size
+    if (peopleArr.length == 0 ) {
+        document.getElementById("Id-boardInfo").style.visibility = "hidden";
+        return;
+    }
+
+    // try to set the each person who are in storage.
     document.getElementById("Id-boardInfo-p").innerHTML = "";
-    document.getElementById("Id-boardInfo").style.visibility = "hidden";
+    for (x of peopleArr.people) {
+        document.getElementById("Id-boardInfo-p").innerHTML += x.name + ", " + x.gender + "<br />";
+    }
+        
+}
+
+
+function isPersonInputsCorrect() {
+    const name = document.getElementById("Id-textName").value.trim();
+    
+    let incorrect = name === "";
+    incorrect |= !testPattern(name);
+
+    return !incorrect;
+}
+
+
+function addPerson(p) {
+    // get json string from storage.
+    let buffer = localStorage.getItem("PEOPLE_STORAGE");
+    
+    // check it whether it is exist or not
+    if (buffer === null) {
+        // assign new json string
+        localStorage.setItem("PEOPLE_STORAGE",  "{\"people\":[]}");
+        buffer = "{\"people\":[]}"
+    }
+    
+    // parse
+    buffer = JSON.parse(buffer);
+    
+    buffer.people.push(p);
+
+    localStorage.setItem("PEOPLE_STORAGE",  JSON.stringify(buffer));
+
+    return buffer;
+}
+
+function clearPerson(p) {
+    let buffer = localStorage.getItem("PEOPLE_STORAGE");
+    
+    if (buffer == null) return;
+
+    buffer = JSON.parse(buffer);
+
+    let newP = {people:[]};
+    for(x of buffer.people) {
+
+        if ( p.name == x.name ) {
+            console.log(x);
+        } else {
+
+            newP.people.push(x);
+        }
+    }
+
+    localStorage.setItem("PEOPLE_STORAGE",  JSON.stringify(newP));
+
+    return newP;
 }
