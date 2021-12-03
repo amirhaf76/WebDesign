@@ -21,6 +21,8 @@ div.main_board {
     padding: 20px;
     column-gap: 20px;
     padding-left: 50px;
+    min-width: 600px;
+    min-height: 400px;
 }
 
 .board_section {
@@ -28,10 +30,18 @@ div.main_board {
     height: 50%;
 }
 
+.board_section_left{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 50px;
+}
+
 .board_section_right{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    justify-content: flex-start;
     row-gap: 50px;
 }
 
@@ -62,7 +72,7 @@ div.main_board {
     row-gap: 5px;
 }
 
-input.cButton {
+.cButton {
     border-style: solid;
     border-width: 2px;
     border-radius: 10px;
@@ -71,3 +81,30 @@ input.cButton {
     width: 80px;
     height: 25px;
 }
+
+.prediction_layout {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#Id-textName {
+    width: 200px;
+    margin-left: 20px;
+  }
+  
+.save_area {
+width: 200px;
+border-style: dotted;
+border-width: 2px;
+}
+  
+  /* Element | file:///F:/Amir/University/Web%20Design/Midterm/WebDesign_Midterm_Project/index.html?name= */
+  
+  .board_section_right > div:nth-child(2) {
+    width: 200px;
+    border-style: dotted;
+    border-width: 2px;
+    height: 160px;
+  }
+  

@@ -4,7 +4,11 @@
  * @param {string} text 
  */
 function testPattern(text) {
-    return /[a-zA-Z ]+/.test(text)
+    const temp = text.replaceAll(" ", "a");
+    
+    if (/(?:\W|\d|\t|\n|_)+/.test(temp)) return false;
+
+    return true;
 }
 
 /**
@@ -16,11 +20,20 @@ function predictGender(name) {
     .then((response) => {
         if (!response.ok) throw new Error("Network has a problem");
         
-        
         return response.json();
     })
-    .then((data) => JSON.stringify(data))
+    .then((data) => {
+        console.log(data);
+        myDisplayer(data);
+    })
     .catch(error => {console.error("There is problem in fetching", error);});
+
+    console.log("here");
+}
+
+function myDisplayer(some) {
+    document.getElementById("Id-predictionGender").innerHTML = some.name;
+    document.getElementById("Id-predictionNumber").innerHTML = some.probability;
 }
 
 /**
@@ -36,4 +49,13 @@ function configSetting() {
 
         event.preventDefault();
     });
+}
+
+
+
+function checkingGender() {
+    const name = document.querySelector("#Id-textName").value;
+    if (testPattern(name)) {
+        predictGender(name);
+    }
 }
