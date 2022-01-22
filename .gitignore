@@ -1,0 +1,4 @@
+Api/MovieInfo/bin/*
+Api/MovieInfo/obj/*
+
+Api/.vs/*
