@@ -5,7 +5,7 @@ namespace MovieInfo.Models
     {
         private readonly int _id;
         private double _rate = 0d;
-        private List<UserComment> _comments = new List<UserComment>();
+        private readonly List<UserComment> _comments = new();
 
         public Movie(int id, string name)
         {
@@ -18,5 +18,12 @@ namespace MovieInfo.Models
         public string Description { get; set; } = "";
         public double Rate => _rate;
         public IEnumerable<UserComment> Comment => _comments;
+
+        public void UpdateRate(int newRate)
+        {
+            if (newRate >= 0 && newRate <= 1) _rate = newRate;
+            else throw new ArgumentOutOfRangeException(nameof(newRate),
+                $"{nameof(newRate)} must be between 0 and 1!");
+        }
     }
 }

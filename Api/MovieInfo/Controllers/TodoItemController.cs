@@ -5,19 +5,17 @@ namespace MovieInfo.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class TodoItemController : ControllerBase
+    public class UserController: ControllerBase
     {
-        private readonly ILogger<TodoItemController> _logger;
-
-        public TodoItemController(ILogger<TodoItemController> logger)
+        [HttpGet(Name = "GetUser")]
+        public User Get()
         {
-            _logger = logger;
-        }
-
-        [HttpGet(Name = "TodoItem")]
-        public TodoItem Get()
-        {
-            return new TodoItem();
+            User user = new User(232, 2, "ali", "ds");
+            using (var context = new MovieKadeContext())
+            {
+                context.Users.Add(user);
+            }
+            return user;
         }
     }
 }
